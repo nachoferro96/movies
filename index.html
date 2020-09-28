@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://use.fontawesome.com/02c321547e.js"></script>
+
+    
+ 
+    <title>Document</title>
+</head>
+<body>
+
+  <div class="contenedor-home" id="contenedor-home">
+    <div class="nav-bar">
+      <div class="contenedor-logo">
+        <img src="./TEXTO.png" alt="logo" class="logo">
+      </div>
+      <div class="search-box">
+        <input class="search-text" type="text" name="" placeholder="Buscar" id="placeholder">
+        <a class="search-btn" href="#" id="buscar">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </a>
+      </div>    
+    </div>
+
+    <div class="contenedor-home-titulos" id="contenedor-home-titulos">
+      <h2>BIENVENIDOS</h2>
+      <p class="descripcion-home">
+        Sumergete en Wikipelis y obten los datos necesarios de tus peliculas favoritas.
+      <br>
+      <br>
+        Nunca se sabe demasiado sobre cine.
+      </p>
+      <div class="boton-github" >
+        <a href="#">Go to Github</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="app">
+    <div class="pelicula-buscada" id="peliculabuscada">
+      <div class="contenedor-logo2">
+        <img src="./TEXTO.png" alt="logo" class="logo">
+      </div>
+      <a href="#buscar" id="" onclick="ocultarbusqueda()">
+        <i class="fa fa-times" aria-hidden="true" id="cruzbusqueda"></i>
+      </a>
+    </div>
+
+
+    <div class="mini-nav">
+      <a href="#primercarrete" class="primer-elemento">Accion</a>
+      <a href="#segundocarrete" class="segundo-elemento">Cimen</a>
+    </div>
+
+
+    <div class="accion" id="primercarrete">
+      <h1>Peliculas de accion mas taquilleras</h1>
+    </div>
+    <div class="peliculas-recomendadas">
+      <div class="contenedor-principal">
+        <button role="button" id="flecha-izquierda" class="flecha-izquierda"><</button>
+        <div class="contenedor-carousel">
+          <div class="carousel">
+            <div class="pelicula" id="lalo" v-for="(accion, index) in accion">
+                  <a href="#contenedorinfo" class="movie">
+                    <img   v-bind:src="accion.image" :id='index * 100' onclick="mostrar(this.id)"/>
+                  </a>
+                  
+            </div>
+            
+          </div>
+        </div>
+        <button role="button" id="flecha-derecha" class="flecha-derecha">></button>
+      </div>
+    </div>
+
+    <div v-for="(accion, index) in accion" class="contenedor-informacion-accion">
+      <div class="info" :id='"a" +index' >
+        <div class="jeje">
+          <img   v-bind:src="accion.image2" :id='index * 100' />
+        </div>
+
+        <div class="pep">
+          <h5>{{ accion.title}}</h5>
+          <div class="post-titulo-info">
+            <div class="contenedor-letritas">
+              <p class="idioma">Idioma:</p><p class="letritas">{{accion.idioma}}</p>
+            </div>
+            <div class="contenedor-letritas">
+              <p class="idioma">Lanzamiento:</p><p class="letritas">{{accion.release_date}}</p>
+            </div>
+            <div class="contenedor-letritas" :id='"letritas" +index'>
+            
+            </div>
+            <div class="over"><p>Overview</p></div>
+            <p>{{ accion.overview}}</p>
+          </div>
+          <a href="#lalo" :id='"cruz" +index' onclick="ocultar(this.id)"><i class="fa fa-times" aria-hidden="true" id="cruz"></i></a> 
+        </div>
+      </div>
+          
+    </div>
+      
+
+    <div class="accion" id="segundocarrete">
+      <h1>Peliculas de crimen mas taquilleras</h1>
+    </div>
+    <div class="peliculas-recomendadas">
+      <div class="contenedor-principal" id="app">
+        <button role="button" id="flecha-izquierda" class="flecha-izquierda2"><</button>
+        <div class="contenedor-carousel" id="contenedor-carousel2">
+          <div class="carousel">
+            <div class="pelicula" id="pelicula2"  v-for="(crime, index) in crime">
+              <a href="#"><img v-bind:src="crime.image" :id='"crimen" + index' onclick="mostrar2(this.id)"/></a>
+            </div>
+          </div>
+        </div>
+        <button role="button" id="flecha-derecha" class="flecha-derecha2">></button>
+      </div>
+    </div>
+
+
+
+
+<!--    AQUI VA LA INFORMACION DE CRIME          -->
+
+
+
+    <div v-for="(crime, index) in crime" class="contenedor-informacion-crime">
+      <div class="info" :id='"cri" +index' >
+        <div class="jeje">
+          <img v-bind:src="crime.image2" />
+        </div>
+
+        <div class="pep2">
+          <h5>{{ crime.title}}</h5>
+          <div class="post-titulo-info"> 
+            <div class="contenedor-letritas">
+              <p class="idioma">idioma:</p><p class="letritas">{{crime.idioma}}</p>
+            </div>
+            <div class="contenedor-letritas">
+              <p class="idioma">Lanzamiento:</p><p class="letritas">{{crime.release_date}}</p>
+            </div>
+            <div class="contenedor-letritas" :id='"letritasa" +index'>
+            
+            </div>
+            <p>{{ crime.overview}}</p>
+            
+        </div>
+          </div>
+          
+          <a href="#lalo" :id='"cruz2" +index' onclick="ocultar2(this.id)"><i class="fa fa-times" aria-hidden="true" id="cruz"></i></a> 
+      </div>
+    </div>
+
+      
+
+    
+    
+
+    
+    
+    
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://use.fontawesome.com/02c321547e.js"></script>
+
+
+<script src="./main.js"></script> 
+    
+
+   
+    
+</body>
+</html>
